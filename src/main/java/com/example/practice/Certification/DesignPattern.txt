@@ -1,0 +1,7 @@
+시나공
+Chap 03. 애플리케이션 설계
+section 28. 디자인 패턴
+
+[1] 생성 패턴 Creational Pattern
+[2] 구조 패턴 Structural Pattern
+[3] 행위 패턴 Behavioral Pattern

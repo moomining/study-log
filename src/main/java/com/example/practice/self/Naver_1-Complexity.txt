@@ -1,0 +1,70 @@
+# 1. 복잡성
+
+## *INTRO*
+
+- 0 ≤ input
+
+input이 음수를 가지는 건 말도 안 된다.
+
+- functions do more work for more input.
+
+더 많은 인풋값을 넣었는데 더 적은 작업을 하는 알고리즘은 없다.
+
+- drop all constatns - 상수는 모두 삭제
+
+3n ⇒  n  : 3 doesn’t matter
+
+3n 5n 10n 50n ⇒ n
+
+ignore constants
+
+⇒ 3n 5n 10n 10000n보다 n^2이 항상 더 오래 걸리는 알고리즘
+
+time y
+
+                        x         
+
+                        n
+
+                        n^2
+
+둘이 겹치는 지점 = 1
+
+1보다 작은 지점은 고려하지 않음 ⇒ why?
+
+- 낮은 차수의 항은 무시 *ignore lower order terms*
+- n^3 + n^2 + n + 5
+
+n^3만 고려
+
+- 로그밑은 무시 *ignore the base of logs*
+
+Math.log(2) = ln(2)
+
+자연로그 
+
+밑이 10인 로그를 자연로그로 바꾸는 법
+
+ln(2)
+
+---
+
+ln(10)
+
+- 2n = O(n) ⇒ 2n ∈ O(n)
+
+여기서 등호는 ‘집합에 속한다’의 뜻
+
+logn Complexity - trees 
+
+log : 2를 곱할 때 많이 사용 
+
+밑이 2인 로그 
+
+[ 복잡도 예시 ]
+
+n - once per item , linked list 
+
+n^2 = comparing everything : bubble sort 
+
+n! (n 팩토리얼) - traveling sales 최단경로

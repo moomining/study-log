@@ -1,0 +1,48 @@
+int i = 10;
+
+4bytes
+
+short : 2 bytes
+
+long : 8 bytes
+
+```java
+Student s = new Student();
+ㄴ 4bytes
+```
+
+[ 4bytes ] ——> heap
+
+Person()
+
+redid
+
+name
+
+email
+
+Student()
+
+GPA
+
+Undergraduate()
+
+year
+
+**public class Person { }**
+
+**public class Student extends Person { }** 
+
+**public class Undergraduate extends Students { }**
+
+다중 상속 허용 X
+
+단일 상속 허용 O
+
+**Undergraduate u = new Undergraduate();**
+
+**Student s = new Undergraduate();**
+
+undergraduate method를 사용할 수 있음
+
+Undergraduate u = new Student();

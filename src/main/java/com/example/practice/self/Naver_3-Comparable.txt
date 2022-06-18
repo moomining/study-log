@@ -1,0 +1,84 @@
+# 4. Comparisons with generics
+
+```java
+String one = “hello world”;
+String two = “hello world”;
+```
+
+overrides Object.eqauls
+
+```java
+if(one.equals(two))
+System.out.println(’they are the same”);
+```
+
+ㄴ 같은 메모리 주소 X 
+
+### *Where equals comes from?*
+
+Object o = one;
+
+Object t = two;
+
+if(o.eqauls(t))
+
+ㄴ 메모리 주소를 비교 
+
+```java
+Monkey m = new Monkey();
+Moneky n = new Monkey();
+if(m equals(n))
+	
+```
+
+Monkey 클래스 만든 사람이 equals override하지 않았다면
+
+Object의 equals 메소드 사용
+
+# Comparable <T>
+
+Comparable 인터페이스
+
+하나의 메소드만 있음
+
+### public int compareTo(T obj)
+
+숫자 비교!
+
+## compareTo
+
+### a.compareTo(b)
+
+**if(a < b) return < 0**
+
+0보다 작은 수 반환
+
+**if(a = b) return 0**
+
+0 반환
+
+**if(a > b) return > 0**
+
+0보다 큰 수 반환
+
+Comparable<T> interface
+
+public int compareTo(T obj)
+
+a-z A-Z
+
+형변환
+
+if(((Comparable<T>) data).compareTo(obj)
+
+== 0)
+
+//they are the same
+
+compareTo 메소드 불러오면 Comparable 인터페이스 안에 들어있는 것
+
+contains
+
+public boolean contains(E obj)
+
+LinkedList

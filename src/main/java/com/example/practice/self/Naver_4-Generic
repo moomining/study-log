@@ -1,0 +1,62 @@
+# 5. Generic Programming
+
+환상적이고 놀라운 정렬 알고리즘
+
+```java
+public class ss{
+	public int[] superSort(int [] array) {
+		... sort ...
+	return array;
+	}
+```
+
+int → Person 
+
+→ String
+
+Object
+
+│
+
+Person  —- name
+
+│      \
+
+Student  Faculty   —- year redId
+
+│
+
+Undergraduate  —- year
+
+⇒ Object Array에 다 담아준다.
+
+```java
+Object[] arr = new Object[10];
+Student s = new Student();
+Object obj = s;
+arr[0] = obj;
+```
+
+redId
+
+year
+
+year
+
+heap에서 가리키고 있는 위치가 같은지 비교
+
+person, Student, Undergraduate 클래스는 memory location of Object만을 가지고 있음
+
+```java
+Monkey m = new Monkey();
+arr[1] = m;
+String s = "chalk&cheese";
+arr[2] = s;
+=> Possible
+```
+
+매개변수화 타입
+
+Paramentirized Types
+
+특정 공간에 넣을 타입을 결정할 수 있음

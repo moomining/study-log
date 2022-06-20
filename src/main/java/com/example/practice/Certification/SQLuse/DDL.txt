@@ -1,0 +1,66 @@
+# section 107. DDL
+
+# DDL (Data Definition Language)
+
+데이터 정의어
+
+## CREATE SCHEMA
+
+```java
+CREATE SCHEMA 스키마명 AUTHORIZATION 사용자_ID;
+```
+
+## CREATE DOMAIN
+
+```java
+CREATE DOMAIN SEX CHAR(1) DEFAULT '남' CONSTRAINT VALID-SEX CHECK(VALUE IN ('남','여'));
+```
+
+## CREATE TABLE
+
+```java
+CREATE TABLE TBL_STUDENT 
+	NAME VARCHAR(15) NOT NULL,
+	STD_ID CHAR(8),
+	MAJOR VARCHAR(30),
+	GENDER SEX,
+	BIRTH_DAY DATE,
+	PRIMARY KEY(STD_ID),
+	FOREIGN KEY(MAJOR) REFERENCES DEPARTMENT(DEPT_CODE)
+		ON DELETE SET NULL, (DEPARTMENT 테이블에서 튜플이 삭제되면 관련된 모든 튜플의 MAJOR 속성값을 NULL로 변경)
+		ON UPDATE CASCADE, (DEPARTMENT 테이블에서 DEPT_CODE가 변경되면 여기 MAJOR 값도 같은 값으로 동기화)
+
+CONSTRAINT CONST_BIRTH_DATE
+	CHECK(BIRTH_DAY >= '1980-01-01');
+```
+
+## CREATE VIEW
+
+```java
+CREATE VIEW 뷰명 AS SELECT문;
+```
+
+## CREATE INDEX
+
+```java
+CREATE [UNIQUE] INDEX 인덱스명 ON 테이블명(속성명) CLUSTER;
+```
+
+## ALTER TABLE
+
+```java
+1. ALTER TABLE 테이블명 ADD 속성명 DATA_TYPE [DEFAULT '기본값'];
+ㄴ 속성 추가
+2. ALTER TABLE 테이블명 ALTER 속성명 [SET DEFAULT '기본값'];
+ㄴ 속성 변경
+3. ALTER TABLE 테이블명 DROP COLUMN 속성명 [CASCADE];
+```
+
+## DROP
+
+```java
+DROP TABLE/INDEX/SCHEMA/DOMAIN/VIEW/CONSTRAINT 명칭 [CASCADE/RESTRICT];
+```
+
+- CASCADE : 제거할 요소를 참조하는 다른 모든 개체를 함께 제거. 관계를 맺고 있는 모든 데이터를 제거
+- RESTRICT : 다른 개체가 참조 중일 때는 제거를 취소

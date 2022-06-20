@@ -1,0 +1,73 @@
+# section110. SELECT
+
+## 조건 연산자
+
+- 비교 연산자
+
+| 연산자 | = | <> |
+| --- | --- | --- |
+| 의미 | 같다 | 같지 않다 |
+- 논리 연산자 : NOT, AND, OR
+- LIKE 연산자
+
+| 대표 문자 | % | _ | # |
+| --- | --- | --- | --- |
+| 의미 | 문자 + 숫자 | 문자 하나 | 숫자 하나 |
+
+## DISTINCT
+
+## NOT IN
+
+## STDDEV() : 표준편차
+
+## VARIANCE() : 분산
+
+## ROLLUP()
+
+: 그룹별 소계
+
+## CUBE()
+
+: 전 조합의 그룹별 소계
+
+## ROW_NUMBER()
+
+: 각 레코드에 대한 일련 번호
+
+## RANK()
+
+: 공동 순위 반영 순위
+
+## DENSE_RANK()
+
+: 공동 순위 미반영 순위
+
+# JOIN
+
+## (INNER) JOIN
+
+### EQUI JOIN
+
+: = 비교에 의해 같은 값을 가지는 행을 연결하여 결과를 생성
+
+### NON-EQUI JOIN
+
+: = 가 아닌 <, <>, ≥, ≤ 연산자 이용 조인 (같지 않지만 비교는 비교)
+
+## OUTER JOIN
+
+### LEFT OUTER JOIN
+
+LEFT + NULL
+
+### RIGHT OUTER JOIN
+
+RIGHT + NULL
+
+### FULL OUTER JOIN
+
+= LEFT + RIGHT (모두 NULL 포함)
+
+## SELF JOIN
+
+A * A

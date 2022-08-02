@@ -1,0 +1,122 @@
+# 제 1장, 컴퓨터 추상화 및 관련 기술
+
+## The BIG Picture
+
+Input/Output includes
+
+- User-interface devices
+    - 디스플레이, 키보드, 마우스
+- Storage devices
+    - 하드디스크, CD/DVD, 플래시
+- 네트워크 어댑터
+    - For communicating with other computers
+- TouchScreen
+    - PostPC device
+    - Supersedes keyboard and mouse
+- LCD screen : picture elements(픽셀)
+    - 미러 콘텐츠, 프레임 버퍼 메모리
+
+## 케이스를 열고
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e818fc4e-5fb3-4e54-b27d-3322787e4583/Untitled.png)
+
+## inside the Processor(CPU)
+
+- 데이터패스 Datapath : 데이터에서 operations을 한다.
+    - 연산을 수행! operation = 연산
+- 제어 유닛 Control : 명령어가 뜻하는 바에 따라 데이터패스, 메모리, 입출력장치가 할 일을 지시.
+    
+    ㄴ 4장에서 고성능 설계의 데이터패스 & 제어 유닛에 대해 설명할 것
+    
+- 캐쉬 메모리 : DRAM의 버퍼 역할을 하는 작고 빠른 메모리
+    - SRAM이라는 다른 메모리 기술을 이용. SRAM은 DRAM보다 집적도가 낮아서 가격이 비싸다
+    
+
+## 추상화
+
+- 추상화는 복잡성을 푸는 데 도움을 줌
+    - 낮은 레벨의 디테일을 감춰줌
+- Instruction Set Architecture (ISA)
+    - 하드웨어 / 소프트웨어 인터페이스
+    - instruction을 통해 하드웨어 - 소프트웨어 가 정보를 주고 받는다.
+- Application Binary Interface (ABI)
+    - ISA plus system SW interface
+- Implementation
+    - the details
+
+## 데이터의 안전한 저장소
+
+### 메인 메모리 = 휘발성 메모리
+
+전원을 끄면 데이터와 인스트럭션이 사라짐
+
+### 보조기억장치 = 비휘발성 메모리
+
+- 마그네틱 디스크 HDD
+- 플래시 메모리 SSD
+- 옵티컬 디스크 (cdrom, DVD)
+- 
+
+### Networks
+
+### 컴퓨터에 사용된 기술의 상대적 가격 대 성능비
+
+| year | Tech | 상대성능/cost |
+| --- | --- | --- |
+| 1951 | Vacuum tube | 1 |
+| 1965 | Transistor | 35 |
+| 1975 | Integrated circuit (IC) | 900 |
+| 1995 | Very Large scale IC (VLSI) | 2,400,000 |
+| 2013 | U | 250,000,000,000 |
+
+## 반도체 Tech
+
+Silicon : 반도체
+
+Add materials to transform properties 
+
+Manufacturing ICs
+
+Yield : proportion of working dies per wafer
+
+Intel Core i7 Wafer
+
+300mm wafer, 280 chips, 32nm tech
+
+# 1.4 성능
+
+Response Time
+
+- How long it takes to do a task
+
+Throughput
+
+- total work done per unit time
+- 단위시간 당 얼마나 많은 양을 할 수 있나
+- ex. 한 시간동안 실행한 태스크, 트랜잭션의 수
+
+응답시간과 처리량은 
+
+- 더 빠른 프로세서 버전에 영향을 받는다? : 응답시간↑ 처리량 ↑
+- 프로세서 추가? : 응답시간- 처리량↑
+
+응답시간에만 집중할 것이다.
+
+$성능x = 1/실행시간x$
+
+x는 y보다 n배 빠르다
+
+$Px/Py = 실행시간y/실행시간x=n$서
+
+**성능은 실행시간에 반비례한다!**
+
+Elapsed time
+
+- total response time, including all aspects
+    - Processing, I/O, OS, overhead, idle time
+    - system performances 결정
+
+CPU time
+
+- user CPU time
+- system CPU time

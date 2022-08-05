@@ -1,0 +1,133 @@
+# Power Wall
+
+Power Trends
+
+Wall 
+
+- power wall
+- memory wall
+
+### Power = Capacitive load * Voltage^2 * Frequency
+
+전력 소모를 줄이기 위해 많은 노력을 함 
+
+85% of capacity load
+
+15% voltage and 15% frequency reduction
+
+Pnew / Pold =
+
+열 방출 ↑
+
+⇒ Sol. Multi Core  
+
+### UniProcessor Performance
+
+52% 증가 → 22% 증가
+
+power
+
+### MultiProcessors
+
+- MultiCore Microprocessors
+    - more than 1 processor per chip
+- explicitly parallel programming
+    - compare with instruction level parallelism
+        - Hardware가 알아서 여러 개 인스트럭션을 한번에 실행해 줌
+        - 프로그래머한테는 숨어 있음
+    - hard to do
+        - Programming for performance
+        - Load Balancing
+        - Optimizing communication and synchronization
+
+Parallel ↔ sequential 에 비해 10배 어려움 
+
+### SPEC CPU Benchmark
+
+- Programs used to measure performance
+    - 벤치마크 = 성능을 측정하기 위해 선택된 프로그램의 집합
+- Standard Performance Evaluation Corp(SPEC)
+    - develops benchmarks for CPU/I/O/web
+- SPEC CPU2006
+    - 경과 시간, 프로그램 선택을 집행하기 위한
+    - reference machine에 비해 normalize 됨
+    - 요약함 geometric mean of performance ratios CINT2006 and CFP2006
+    
+
+### SPEC Power Benchmark
+
+server side java를 초당 몇 개 실행했나
+
+Power : Watts (Joules/sec)   
+
+ssj_ops per Watt = ssj_ops / power 
+
+## 결론
+
+Cost/Performance is improving
+
+Moore’s law
+
+Hierarchial layers of abstraction
+
+HW SW 모두에서
+
+Instruction set architecture
+
+HW/SW interface
+
+Execution time : the best performance measure
+
+Power is a limiting factor
+
+Use parallelism to improve performance 
+
+→ SOLUTION . Multi-core 
+
+# 1.9 오류 및 함정
+
+## 암달’s Law
+
+컴퓨터의 한 부분만 개선하고 그 개선된 양에 비례해서 전체 성능이 좋아질 것이라고 기대하는 것
+
+$$
+Timproved = Taffected / improvement facotr + Tunaffected
+$$
+
+ex: multiply accounts for 80s/100s 
+
+20 = 80/n + 20
+
+곱하기의 성능 향상만으로는 전체 시간을 5배 향상시키는 것은 불가하다
+
+Corollary : make the common case fast 
+
+## Low Power at Idle
+
+i7 power benchmark
+
+- at 100% load : 258W
+- at 50% load : 170W (66%)
+- at 10% load : 121W (47%)
+
+⇒ load와 전력소모(와트)는 일치하지 않음
+
+Google data center
+
+- Mostly operates at 10% - 50% load
+- at 100% load less than 1% of the time
+
+designing processors to make power proportional to load
+
+## MIPS as a Performance Metric
+
+MIPS : Milions of Instructions Per Second
+
+- differences in ISAs between computers
+- differences in complexity btw instructions
+
+MIPS = instruction count / execution time * 10^6
+
+= instruction count / instruction count * CPI /clock rate * 10 ^6
+
+= Clock rate / CPI * 10^6

@@ -1,5 +1,8 @@
 package com.example.practice.Algorithm;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Map_exercise_1 {
 	
 	public int solution(int[] nums) {

@@ -1,0 +1,133 @@
+# 2.8 하드웨어의 프로시져 지원
+
+## 프로그램이 프로시져를 실행하는 6단계  ★ 암기!
+
+1. 프로시져가 접근할 수 있는 곳에 인수를 넣는다.
+    1. $a0 - $a3 : 4 argument registers
+2. 프로시져로 제어를 넘긴다.
+3. 프로시져가 필요로 하는 메모리 자원을 획득한다.
+4. 필요한 작업을 수행한다.
+5. 호출한 프로그램이 접근할 수 있는 장소에 결과값을 넣는다.
+    1. $v0 - $v1 : 2 value registers for result values
+6. 프로시져는 프로그램 내의 여러 곳에 호출될 수 있으므로 원래 위치로 제어를 돌려준다.
+    1. $ra : 1 return address register to return to the point of origin
+
+## 레지스터 사용법
+
+- $a0 - $a3 : arguments (reg’s 레지스터 4-7)
+- $v0 - $v1 : result values (reg’s 2 - 3)
+- $t0 - $t9 : 임시값
+    - 프로시져에 의해 overwritten될 수 있음
+- $s0 - $s7 : 지역 변수 (local variables)를 저장하는 데 사용
+- $gp : global pointer for static data (reg 28)
+- $sp : stack pointer (reg 29)
+- $fp : frame pointer (뒤에서 자세히 배움) (reg 30)
+- $ra : return address (reg 31)
+
+## 프로시져 호출 명령어
+
+- Procedure call : jump and link
+- jal : ProcedureLabel
+    - 다음 명령어의 주소를 $ra에 전달
+    - 타켓 주소로 건너뜀
+- jr $ra
+    - 프로그램 카운터(PC, 현재 실행하고 있는 명령어의 메모리 주소를 가짐)로 $ra를 복사함
+    - computed jumps 할 때 사용
+
+## 중첩된 프로시져 Leaf Procedure Example
+
+C Code
+
+int leaf_example (int g, h, i, j) 
+
+## 중첩되지 않은 프로시져
+
+C Code
+
+int fact (int n)
+
+{
+
+if (n < 1) return f;
+
+else return n * fact(n-1);
+
+}
+
+argument n in $a0
+
+return value $v0
+
+MIPS Code 알아야 하나,,,
+
+## 새 데이터를 위한 스택 공간의 할당
+
+- 프로시져의 저장된 지역 변수를 가지고 있는 스택 영역 : 프로시져 프레임, 액티베이션 레코드
+
+그림 2.14
+
+fp : frame pointer
+
+sp : stack pointer 
+
+### 메모리 구조
+
+그림 2.15
+
+- 텍스트 : 프로그램 코드
+    - pc
+- 정적 데이터 : 전역 변수
+    - 1000 8000hex ~ 1000 0000hex 중간 값
+- 동적 데이터
+    - malloc in C , new in Java
+    - hip : 스택을 향해 자란다.
+- 스택 : 스택 overflow 스택이 계속 증가해서 dynamic data의 hip 공간을 침범한 것
+    - 지역 변수
+    - activation record
+    - automatic storage
+
+# 2.9 문자와 문자열
+
+## 문자 데이터
+
+- Byte-encoded character sets
+    - ASCII : 128 문자
+        - 95 graphics, 33 control
+    - Latin-1 : 256
+- Unicode : 32-bit character set
+    - Java, C++ 등에서 사용
+    - 알파벳, 심볼 등 거의 구현 가능
+    - UTF-8, UTF-16
+    
+
+## Byte / Halfword 연산
+
+MIPS byte/halfword load/store 
+
+- String processing is a common case
+    - lb rt, offset(rs)   lh rt, offset(rs)   : 32bits extend해서 레지스터에 넣음
+    - lbu rt, offset(rs)   lhu rt, offset(rs)
+    - sb rt, offset(rs)   sh rt, offset(rs)
+
+## String copy example
+
+```c
+void strcpy (char x[], char y[])
+{ int i;
+i = 0;
+while((x[i] = y[i]) != '\0')
+	i += 1;
+}
+```
+
+Leaf Procedure
+
+- function이 다른 function을 부르지 않기 때문
+- MIPS code 생략…
+
+jal procedureLabel 명령어의 의미는?
+
+jump and link 
+
+1. Address of following instruction put in $ra (명령어 다음에 있는 명령어로 명령어가 있는 메모리 주소를 $ra 레지스터에 넣음)
+2. Jumps to target address  (타겟 주소로 점프)
